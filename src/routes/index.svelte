@@ -1,7 +1,7 @@
 <script>
 	import { createPageSelector } from "$lib/pageSelector";
 
-	let {pageSelector, nextPage, previousPage} = createPageSelector(25, 4)
+	const {pageSelector, nextPage, previousPage} = createPageSelector(25, 4)
 </script>
 
 <h1>pageselectorproofofconcept</h1>
