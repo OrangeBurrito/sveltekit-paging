@@ -1,23 +1,19 @@
 <script>
-import { posts } from "$lib/data";
+	import Pager from "$lib/components/Pager.svelte";
+	import { posts } from "$lib/data";
 
-	import { createPageSelector } from "$lib/pageSelector";
+	let selectedPosts = [];
 
-	const {pageSelector, nextPage, previousPage} = createPageSelector(posts.length, 4)
-
-	let selectedPosts = []
-
-	$: {
-		selectedPosts = posts.slice($pageSelector.startIndex, $pageSelector.startIndex + $pageSelector.limit)
+	function onPageSelected(e) {
+		const {startIndex, endIndex} = e.detail
+		console.log(e.detail)
+			selectedPosts = posts.slice(startIndex, endIndex)
 	}
 </script>
 
 <h1>pageselectorproofofconcept</h1>
 
-<button on:click={previousPage}>Previous</button>
-<button on:click={nextPage}>Next</button>
-
-<pre>{JSON.stringify($pageSelector, null, 2)}</pre>
+<Pager total={posts.length} limit={4} on:page-selected={onPageSelected}/>
 
 <pre>
 	{JSON.stringify(selectedPosts, null, 2)}
