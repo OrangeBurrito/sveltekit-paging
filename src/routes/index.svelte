@@ -1,4 +1,5 @@
 <script>
+	import '../style.css'
 	import Pager from "$lib/components/Pager.svelte";
 	import { posts } from "$lib/data";
 
@@ -11,7 +12,7 @@
 	}
 </script>
 
-<h1>pageselectorproofofconcept</h1>
+<h1>Page Selector Proof of Concept</h1>
 
 <Pager total={posts.length} limit={4} on:page-selected={onPageSelected}/>
 
